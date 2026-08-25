@@ -2,23 +2,24 @@ const portfolioData = {
   name: "Rajeev Singh",
   title: "SDET / Software Test Engineer",
   location: "Gurugram, India",
-  experienceYears: "2+ years",
-  summary: "SDET / Software Test Engineer with 2+ years of experience in UI, API and mobile automation, backend validation, CI/CD and software quality engineering. I design reusable automation frameworks, validate business-critical workflows, and help teams ship reliable digital products with strong regression coverage.",
+  experienceYears: "",
+  summary: "SDET / Software Test Engineer with {{experience}} of experience in UI, API and mobile automation, backend validation, CI/CD and software quality engineering. I design reusable automation frameworks, validate business-critical workflows, and help teams ship reliable digital products with strong regression coverage.",
   education: [
-    { degree: "B.Tech in Computer ()", institute: "Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India", dates: "Jul 2020 – Aug 2024" },
-    { degree: "Intermediate (Science Stream)", institute: "SVM, Lucknow, India", dates: "Jun 2018 – May 2020" }
+    { degree: "B.Tech in Computer", institute: "Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India", dates: "Jul 2020 – Aug 2024" },
+    { degree: "Intermediate (Science Stream)", institute: "BS Inter College, Sultanpur, Uttar Pradesh, India", dates: "Jun 2018 – May 2020" }
   ],
   clients: [
     { name: "Denso", relation: "UI and mobile automation support" },
     { name: "TG Minda", relation: "Site and application support" },
-    { name: "Havells", relation: "Client environment support" },
-    { name: "Jaguar", relation: "Client environment support" }
+    { name: "Havells", relation: "" },
+    { name: "Jaguar", relation: "" }
   ],
   experience: [
     {
       company: "Future Algorithm Pvt Ltd",
       role: "SDET / Software Test Engineer",
-      duration: "9 months",
+      startDate: "2025-12-15",
+      endDate: null,
       location: "Gurugram",
       bullets: [
         "Built and maintained UI, API and mobile automation using Selenium, Appium, REST Assured, Java and TestNG.",
@@ -29,9 +30,24 @@ const portfolioData = {
       ]
     },
     {
-      company: "ReacoiLife",
+      company: "REACOLIFE",
       role: "SDET Trainee",
-      duration: "6 months",
+      startDate: "2024-08-23",
+      endDate: "2025-01-23",
+      location: "Noida",
+      bullets: [
+        "Executed manual, automation and API testing across web applications and service workflows.",
+        "Developed Selenium WebDriver, Java, TestNG and Cucumber automation suites to cover regression scenarios.",
+        "Used REST Assured to validate API responses, status codes and payload correctness.",
+        "Integrated test execution into Jenkins for continuous quality validation.",
+        "Supported cross-browser testing, defect tracking and release-readiness checks."
+      ]
+    },
+    {
+      company: "REACOLIFE",
+      role: "SDET / Software Test Engineer",
+      startDate: "2025-01-24",
+      endDate: "2025-12-14",
       location: "Noida",
       bullets: [
         "Executed manual, automation and API testing across web applications and service workflows.",

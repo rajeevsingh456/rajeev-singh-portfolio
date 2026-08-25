@@ -11,7 +11,10 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="#home" aria-label="Rajeev Singh home">RS</a>
-        <nav class="nav" aria-label="Main navigation">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="main-navigation" class="nav" aria-label="Main navigation">
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
@@ -50,7 +53,7 @@
             </div>
             <span class="profile-tag">PROFILE</span>
             <h3 id="profile-title">SDET / Software Test Engineer</h3>
-            <p id="profile-location">Gurugram, India · 2+ years</p>
+            <p id="profile-location">Gurugram, India</p>
             <ul class="mini-stats">
               <li>UI Automation</li>
               <li>API Automation</li>
@@ -75,7 +78,7 @@
 
             <div class="stats-grid reveal">
               <div class="stat-box">
-                <strong id="experience-stat">2+ years</strong>
+                <strong id="experience-stat"></strong>
                 <span>Experience</span>
               </div>
               <div class="stat-box">

@@ -4,30 +4,40 @@ const fallbackData = window.portfolioData || {
   name: 'Rajeev Singh',
   title: 'SDET / Software Test Engineer',
   location: 'Gurugram, India',
-  experienceYears: '2+ years',
-  summary: 'SDET / Software Test Engineer with 2+ years of experience in UI, API and mobile automation, CI/CD and software quality engineering.',
+  experienceYears: '',
+  summary: 'SDET / Software Test Engineer with {{experience}} of experience in UI, API and mobile automation, CI/CD and software quality engineering.',
   education: [
-    { degree: 'B.Tech in Computer ()', institute: 'Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India', dates: 'Jul 2020 – Aug 2024' },
-    { degree: 'Intermediate (Science Stream)', institute: 'SVM, Lucknow, India', dates: 'Jun 2018 – May 2020' }
+    { degree: 'B.Tech in Computer', institute: 'Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India', dates: 'Jul 2020 – Aug 2024' },
+    { degree: 'Intermediate (Science Stream)', institute: 'BS Inter College, Sultanpur, Uttar Pradesh, India', dates: 'Jun 2018 – May 2020' }
   ],
   clients: [
     { name: 'Denso', relation: 'UI and mobile automation support' },
     { name: 'TG Minda', relation: 'Site and application support' },
-    { name: 'Havells', relation: 'Client environment support' },
-    { name: 'Jaguar', relation: 'Client environment support' }
+    { name: 'Havells', relation: '' },
+    { name: 'Jaguar', relation: '' }
   ],
   experience: [
     {
       company: 'Future Algorithm Pvt Ltd',
       role: 'SDET / Software Test Engineer',
-      duration: '9 months',
+      startDate: '2025-12-15',
+      endDate: null,
       location: 'Gurugram',
       bullets: ['UI, API and mobile automation using Selenium, Appium, REST Assured, Java and TestNG.', 'Designed and maintained POM-based automation frameworks and CI/CD integration.', 'Functional, regression, cross-browser and API testing in Agile/Scrum environments.', 'JIRA-based defect tracking and collaboration with development teams.', 'Worked with Redis and MQTT for real-time data validation and messaging workflow testing.']
     },
     {
-      company: 'ReacoiLife',
+      company: 'REACOLIFE',
       role: 'SDET Trainee',
-      duration: '6 months',
+      startDate: '2024-08-23',
+      endDate: '2025-01-23',
+      location: 'Noida',
+      bullets: ['Executed end-to-end manual, automation and API testing for web applications.', 'Developed Selenium WebDriver, Java, TestNG and Cucumber automation suites.', 'Built API automation with REST Assured and validated responses and schemas.', 'Integrated automated suites with Jenkins CI/CD for continuous testing.', 'Performed cross-browser and cross-device testing and supported regression coverage.']
+    },
+    {
+      company: 'REACOLIFE',
+      role: 'SDET / Software Test Engineer',
+      startDate: '2025-01-24',
+      endDate: '2025-12-14',
       location: 'Noida',
       bullets: ['Executed end-to-end manual, automation and API testing for web applications.', 'Developed Selenium WebDriver, Java, TestNG and Cucumber automation suites.', 'Built API automation with REST Assured and validated responses and schemas.', 'Integrated automated suites with Jenkins CI/CD for continuous testing.', 'Performed cross-browser and cross-device testing and supported regression coverage.']
     }
@@ -94,9 +104,42 @@ const fallbackData = window.portfolioData || {
 
 function normalizeClient(client) {
   if (typeof client === 'string') {
-    return { name: client, relation: 'Client environment' };
+    return { name: client, relation: '' };
   }
-  return { name: client?.name || 'Client', relation: client?.relation || 'Client environment' };
+  return { name: client?.name || 'Client', relation: client?.relation || '' };
+}
+
+function getDateDifference(startDate, endDate = new Date()) {
+  const start = new Date(`${startDate}T00:00:00Z`);
+  const end = endDate instanceof Date ? endDate : new Date(`${endDate}T00:00:00Z`);
+  let years = end.getUTCFullYear() - start.getUTCFullYear();
+  let months = end.getUTCMonth() - start.getUTCMonth();
+  let days = end.getUTCDate() - start.getUTCDate();
+
+  if (days < 0) {
+    months -= 1;
+    days += new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), 0)).getUTCDate();
+  }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  const parts = [];
+  if (years) parts.push(`${years} year${years === 1 ? '' : 's'}`);
+  if (months) parts.push(`${months} month${months === 1 ? '' : 's'}`);
+  if (!parts.length || days) parts.push(`${days} day${days === 1 ? '' : 's'}`);
+  return parts.join(' ');
+}
+
+function formatDate(dateString) {
+  return new Date(`${dateString}T00:00:00Z`).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+  });
+}
+
+function getDynamicExperience() {
+  return getDateDifference('2024-08-23');
 }
 
 function buildProjectMarkup(project, index) {
@@ -179,7 +222,9 @@ function buildProjectMarkup(project, index) {
 }
 
 function buildExperienceMarkup(data) {
-  return (data.experience || []).map((item, index) => `
+  return (data.experience || []).slice().sort((first, second) =>
+    new Date(second.startDate) - new Date(first.startDate)
+  ).map((item, index) => `
     <div class="timeline-item reveal" style="--delay:${index * 100}ms">
       <div class="timeline-node"></div>
       <article class="timeline-card">
@@ -188,9 +233,9 @@ function buildExperienceMarkup(data) {
             <p class="eyebrow accent">${item.company}</p>
             <h3>${item.role}</h3>
           </div>
-          <span class="timeline-duration">${item.duration}</span>
+          <span class="timeline-duration">${getDateDifference(item.startDate, item.endDate || new Date())}</span>
         </div>
-        <p class="meta-line">${item.location}</p>
+        <p class="meta-line">${item.location} · ${formatDate(item.startDate)} – ${item.endDate ? formatDate(item.endDate) : 'Present'}</p>
         <ul>
           ${(item.bullets || []).map(bullet => `<li>${bullet}</li>`).join('')}
         </ul>
@@ -254,7 +299,7 @@ function buildClientsMarkup(data) {
       <article class="client-card reveal" style="--delay:${index * 80}ms">
         <div class="client-logo">${clientData.name.slice(0, 2).toUpperCase()}</div>
         <h3>${clientData.name}</h3>
-        <p>${clientData.relation}</p>
+        ${clientData.relation ? `<p>${clientData.relation}</p>` : ''}
       </article>
     `;
   }).join('');
@@ -271,7 +316,7 @@ function renderContent(data) {
   const educationGrid = document.getElementById('education-grid');
   const architectureList = document.getElementById('architecture-list');
 
-  if (summaryText) summaryText.textContent = data.summary;
+  if (summaryText) summaryText.textContent = data.summary.replace(/\{\{experience\}\}|2\+ years/g, data.experienceYears);
   if (experienceStat) experienceStat.textContent = data.experienceYears;
   if (experienceGrid) experienceGrid.innerHTML = buildExperienceMarkup(data);
   if (projectsGrid) projectsGrid.innerHTML = (data.projects || []).slice(0, 3).map(buildProjectMarkup).join('');
@@ -292,6 +337,27 @@ function setupProjectToggles() {
       button.setAttribute('aria-expanded', String(!isExpanded));
       button.textContent = isExpanded ? 'View Details' : 'Hide Details';
       details.classList.toggle('open', !isExpanded);
+    });
+  });
+}
+
+function setupMobileNavigation() {
+  const toggle = document.querySelector('.nav-toggle');
+  const navigation = document.getElementById('main-navigation');
+  if (!toggle || !navigation) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+    navigation.classList.toggle('open', !isOpen);
+  });
+
+  navigation.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      navigation.classList.remove('open');
     });
   });
 }
@@ -331,10 +397,8 @@ async function loadPortfolioData() {
       data.title = profile.title || data.title;
       data.location = profile.location || data.location;
       data.summary = profile.summary || data.summary;
-      data.experienceYears = profile.experienceYears || data.experienceYears;
-      data.education = Array.isArray(profile.education)
-        ? profile.education.map(normalizeEducation)
-        : (data.education || []);
+      data.experienceYears = getDynamicExperience();
+      data.education = fallbackData.education.map(normalizeEducation);
       data.clients = Array.isArray(profile.clients)
         ? profile.clients.map(normalizeClient)
         : (data.clients || []);
@@ -370,7 +434,7 @@ async function loadPortfolioData() {
       if (Array.isArray(projects) && projects.length) {
         data.projects = projects.map(project => ({
           title: project.title || 'Project',
-          client: project.client || 'Client environment',
+          client: project.client || 'Client',
           role: project.role || 'SDET',
           type: project.type || 'Automation',
           period: project.period || 'Project timeline',
@@ -425,9 +489,11 @@ function setupContactForm() {
 
 async function initPortfolio() {
   const data = await loadPortfolioData();
+  data.experienceYears = getDynamicExperience();
   renderContent(data);
   setProfileMeta(data);
   setupProjectToggles();
+  setupMobileNavigation();
   setupRevealAnimations();
   setupContactForm();
 }

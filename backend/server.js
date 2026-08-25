@@ -13,20 +13,20 @@ const profile = {
   name: 'Rajeev Singh',
   title: 'SDET / Software Test Engineer',
   location: 'Gurugram, India',
-  experienceYears: '2 years 3 months',
+  experienceYears: '',
   summary:
-    'SDET and software test engineering professional with 2+ years of experience across automation frameworks, UI/API/mobile testing, CI/CD, database validation and distributed-system testing.',
+    'SDET and software test engineering professional with {{experience}} of experience across automation frameworks, UI/API/mobile testing, CI/CD, database validation and distributed-system testing.',
 
   education: [
     {
-      degree: 'B.Tech in Computer ()',
+      degree: 'B.Tech in Computer',
       institute:
         'Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India',
       dates: 'Jul 2020 – Aug 2024'
     },
     {
       degree: 'Intermediate (Science Stream)',
-      institute: 'SVM, Lucknow, India',
+      institute: 'BS Inter College, Sultanpur, Uttar Pradesh, India',
       dates: 'Jun 2018 – May 2020'
     }
   ],
