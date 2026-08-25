@@ -1,8 +1,8 @@
 # Rajeev Singh — Portfolio Profile
 
 ## Experience
-- Future Algorithm Pvt Ltd — SDET (QA) / Software Test Engineer — 9 months — Gurugram
-- ReacoiLife — QA Tester — 1.5 years — Noida
+- Future Algorithm Pvt Ltd — SDET / Software Test Engineer — 9 months — Gurugram
+- ReacoiLife — SDET Trainee — 6 months — Noida
 - Total stated experience: 2 years 3 months
 
 ## Clients / client environments mentioned by Rajeev

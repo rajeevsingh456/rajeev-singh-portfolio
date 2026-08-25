@@ -11,11 +11,11 @@ app.use(express.json());
 // Profile data
 const profile = {
   name: 'Rajeev Singh',
-  title: 'SDET (QA) / Software Test Engineer',
+  title: 'SDET / Software Test Engineer',
   location: 'Gurugram, India',
   experienceYears: '2 years 3 months',
   summary:
-    'QA automation and software test engineering professional with 2+ years of experience across automation frameworks, UI/API/mobile testing, CI/CD, database validation and distributed-system testing.',
+    'SDET and software test engineering professional with 2+ years of experience across automation frameworks, UI/API/mobile testing, CI/CD, database validation and distributed-system testing.',
 
   education: [
     {

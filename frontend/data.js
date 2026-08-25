@@ -1,9 +1,9 @@
 const portfolioData = {
   name: "Rajeev Singh",
-  title: "SDET (QA) / Software Test Engineer",
+  title: "SDET / Software Test Engineer",
   location: "Gurugram, India",
   experienceYears: "2+ years",
-  summary: "SDET / QA Automation Engineer with 2+ years of experience in UI, API and mobile automation, backend validation, CI/CD and software quality engineering. I design reusable automation frameworks, validate business-critical workflows, and help teams ship reliable digital products with strong regression coverage.",
+  summary: "SDET / Software Test Engineer with 2+ years of experience in UI, API and mobile automation, backend validation, CI/CD and software quality engineering. I design reusable automation frameworks, validate business-critical workflows, and help teams ship reliable digital products with strong regression coverage.",
   education: [
     { degree: "B.Tech in Computer ()", institute: "Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India", dates: "Jul 2020 – Aug 2024" },
     { degree: "Intermediate (Science Stream)", institute: "SVM, Lucknow, India", dates: "Jun 2018 – May 2020" }
@@ -17,7 +17,7 @@ const portfolioData = {
   experience: [
     {
       company: "Future Algorithm Pvt Ltd",
-      role: "SDET (QA) / Software Test Engineer",
+      role: "SDET / Software Test Engineer",
       duration: "9 months",
       location: "Gurugram",
       bullets: [
@@ -30,8 +30,8 @@ const portfolioData = {
     },
     {
       company: "ReacoiLife",
-      role: "QA Tester",
-      duration: "1.5 years",
+      role: "SDET Trainee",
+      duration: "6 months",
       location: "Noida",
       bullets: [
         "Executed manual, automation and API testing across web applications and service workflows.",

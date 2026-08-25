@@ -2,10 +2,10 @@ const API = 'https://rajeev-singh-portfolio.onrender.com';
 
 const fallbackData = window.portfolioData || {
   name: 'Rajeev Singh',
-  title: 'SDET (QA) / Software Test Engineer',
+  title: 'SDET / Software Test Engineer',
   location: 'Gurugram, India',
   experienceYears: '2+ years',
-  summary: 'SDET / QA Automation Engineer with 2+ years of experience in UI, API and mobile automation, CI/CD and software quality engineering.',
+  summary: 'SDET / Software Test Engineer with 2+ years of experience in UI, API and mobile automation, CI/CD and software quality engineering.',
   education: [
     { degree: 'B.Tech in Computer ()', institute: 'Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India', dates: 'Jul 2020 – Aug 2024' },
     { degree: 'Intermediate (Science Stream)', institute: 'SVM, Lucknow, India', dates: 'Jun 2018 – May 2020' }
@@ -19,15 +19,15 @@ const fallbackData = window.portfolioData || {
   experience: [
     {
       company: 'Future Algorithm Pvt Ltd',
-      role: 'SDET (QA) / Software Test Engineer',
+      role: 'SDET / Software Test Engineer',
       duration: '9 months',
       location: 'Gurugram',
       bullets: ['UI, API and mobile automation using Selenium, Appium, REST Assured, Java and TestNG.', 'Designed and maintained POM-based automation frameworks and CI/CD integration.', 'Functional, regression, cross-browser and API testing in Agile/Scrum environments.', 'JIRA-based defect tracking and collaboration with development teams.', 'Worked with Redis and MQTT for real-time data validation and messaging workflow testing.']
     },
     {
       company: 'ReacoiLife',
-      role: 'QA Tester',
-      duration: '1.5 years',
+      role: 'SDET Trainee',
+      duration: '6 months',
       location: 'Noida',
       bullets: ['Executed end-to-end manual, automation and API testing for web applications.', 'Developed Selenium WebDriver, Java, TestNG and Cucumber automation suites.', 'Built API automation with REST Assured and validated responses and schemas.', 'Integrated automated suites with Jenkins CI/CD for continuous testing.', 'Performed cross-browser and cross-device testing and supported regression coverage.']
     }
@@ -371,7 +371,7 @@ async function loadPortfolioData() {
         data.projects = projects.map(project => ({
           title: project.title || 'Project',
           client: project.client || 'Client environment',
-          role: project.role || 'QA Engineer',
+          role: project.role || 'SDET',
           type: project.type || 'Automation',
           period: project.period || 'Project timeline',
           description: project.description || 'Project summary',

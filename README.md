@@ -4,7 +4,7 @@ This portfolio is based on the profile details supplied in chat and the uploaded
 
 ## Profile
 - Rajeev Singh
-- SDET (QA) / Software Test Engineer
+- SDET / Software Test Engineer
 - Stated experience: 2 years 3 months (9 months Future Algorithm + 1.5 years ReacoiLife)
 - Location: Gurugram, India
 
