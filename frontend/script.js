@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000';
+const API = 'https://rajeev-singh-portfolio.onrender.com';
 
 const fallbackData = window.portfolioData || {
   name: 'Rajeev Singh',
