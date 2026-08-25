@@ -1,9 +1,210 @@
-const express=require('express');const cors=require('cors');const app=express();const PORT=process.env.PORT||5000;app.use(cors());app.use(express.json());
-const profile={name:'Rajeev Singh',title:'SDET (QA) / Software Test Engineer',location:'Gurugram, India',experienceYears:'2 years 3 months',summary:'QA automation and software test engineering professional with 2+ years of experience across automation frameworks, UI/API/mobile testing, CI/CD, database validation and distributed-system testing.',education:[{degree:'B.Tech in Computer ()',institute:'Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India',dates:'Jul 2020 – Aug 2024'},{degree:'Intermediate (Science Stream)',institute:'SVM, Lucknow, India',dates:'Jun 2018 – May 2020'}],clients:['Denso','TG Minda','Havells','Jaguar']};
-const skills=['Java','Selenium WebDriver','Playwright','REST Assured','TestNG','Cucumber / BDD','Appium','SQL / Database Testing','Jenkins / CI-CD','AWS','Git / GitHub','Postman','JIRA / Zephyr / Bugzilla','Maven','Python','Docker','POM / Test Architecture','Kubernetes','Redis / MQTT','AI Automation'];
-const projects=[
-  {title:'Digimach — End-to-End Test Automation Framework',client:'Digimach',role:'Automation Framework Architect',type:'End-to-End Automation | Web | Desktop | API | Messaging | Database',period:'12/2025 – Present',description:'Designed a framework from scratch covering Web UI, Desktop UI, API, Messaging, Redis and PostgreSQL validation to support end-to-end automation and release confidence.',responsibilities:['Built end-to-end automation across Web UI, Desktop UI, API and messaging layers.','Automated web workflows using Java + Selenium and desktop workflows using Appium.','Integrated REST Assured, MQTT and database validation to verify end-to-end data flow.','Planned Jenkins CI/CD execution for scheduled regression and faster defect isolation.'],stack:['Java','Selenium','Appium','REST Assured','MQTT','Redis','PostgreSQL','Jenkins','TestNG','API Automation','Database Validation']},
-  {title:'PCR System — UI Automation Framework',client:'Denso',role:'Automation Engineer',type:'UI Automation',period:'10/2025 – Present',description:'Designed and developed a Selenium WebDriver automation framework with Java and TestNG, implementing BDD-based workflows for request creation, approval flows and validations.',responsibilities:['Developed a reusable Selenium Java framework with TestNG structure.','Implemented BDD using Cucumber for readable business-flow automation.','Automated request creation, approval and validation scenarios.','Applied Page Object Model for maintainability and reusability.','Integrated Jenkins automation and executed suites in AWS environments.','Generated logs and reports for defect analysis and debugging.'],stack:['Selenium','Java','TestNG','Cucumber','BDD','Page Object Model','Jenkins','AWS']},
-  {title:'Denso — API & Mobile Automation Framework',client:'Denso',role:'Automation Framework Developer',type:'API Automation + Mobile Automation',period:'Ongoing',description:'Designed and maintained reusable API and mobile automation frameworks using Java, REST Assured, Appium and TestNG, with scalable architecture for efficient execution and validation.',responsibilities:['Built reusable API automation frameworks for functional, negative and validation scenarios.','Automated status-code, payload and business-rule validation checks.','Developed Appium-based mobile automation for login workflows and end-to-end Android scenarios.','Used Page Object Model patterns for maintainable mobile test design.','Executed API and mobile validation with data-driven architecture and reusable test methods.'],stack:['REST Assured','Java','TestNG','API validation','Functional testing','Negative testing','Data-driven testing','Response validation','Business-rule validation','Appium','Android Studio','Page Object Model','Android devices/emulators','End-to-end mobile scenarios']}
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Profile data
+const profile = {
+  name: 'Rajeev Singh',
+  title: 'SDET (QA) / Software Test Engineer',
+  location: 'Gurugram, India',
+  experienceYears: '2 years 3 months',
+  summary:
+    'QA automation and software test engineering professional with 2+ years of experience across automation frameworks, UI/API/mobile testing, CI/CD, database validation and distributed-system testing.',
+
+  education: [
+    {
+      degree: 'B.Tech in Computer ()',
+      institute:
+        'Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India',
+      dates: 'Jul 2020 – Aug 2024'
+    },
+    {
+      degree: 'Intermediate (Science Stream)',
+      institute: 'SVM, Lucknow, India',
+      dates: 'Jun 2018 – May 2020'
+    }
+  ],
+
+  clients: ['Denso', 'TG Minda', 'Havells', 'Jaguar']
+};
+
+// Skills
+const skills = [
+  'Java',
+  'Selenium WebDriver',
+  'Playwright',
+  'REST Assured',
+  'TestNG',
+  'Cucumber / BDD',
+  'Appium',
+  'SQL / Database Testing',
+  'Jenkins / CI-CD',
+  'AWS',
+  'Git / GitHub',
+  'Postman',
+  'JIRA / Zephyr / Bugzilla',
+  'Maven',
+  'Python',
+  'Docker',
+  'POM / Test Architecture',
+  'Kubernetes',
+  'Redis / MQTT',
+  'AI Automation'
 ];
-app.get('/api/health',(req,res)=>res.json({status:'ok',service:'rajeev-portfolio-api'}));app.get('/api/profile',(req,res)=>res.json(profile));app.get('/api/skills',(req,res)=>res.json(skills));app.get('/api/projects',(req,res)=>res.json(projects));app.post('/api/contact',(req,res)=>{const{name,email,message}=req.body;if(!name||!email||!message)return res.status(400).json({message:'Name, email and message are required.'});console.log('Contact:',{name,email,message});res.status(201).json({message:'Message received successfully.'})});app.listen(PORT,()=>console.log(`API running on http://localhost:${PORT}`));
+
+// Projects
+const projects = [
+  {
+    title: 'Digimach — End-to-End Test Automation Framework',
+    client: 'Digimach',
+    role: 'Automation Framework Architect',
+    type: 'End-to-End Automation | Web | Desktop | API | Messaging | Database',
+    period: '12/2025 – Present',
+
+    description:
+      'Designed a framework from scratch covering Web UI, Desktop UI, API, Messaging, Redis and PostgreSQL validation to support end-to-end automation and release confidence.',
+
+    responsibilities: [
+      'Built end-to-end automation across Web UI, Desktop UI, API and messaging layers.',
+      'Automated web workflows using Java + Selenium and desktop workflows using Appium.',
+      'Integrated REST Assured, MQTT and database validation to verify end-to-end data flow.',
+      'Planned Jenkins CI/CD execution for scheduled regression and faster defect isolation.'
+    ],
+
+    stack: [
+      'Java',
+      'Selenium',
+      'Appium',
+      'REST Assured',
+      'MQTT',
+      'Redis',
+      'PostgreSQL',
+      'Jenkins',
+      'TestNG',
+      'API Automation',
+      'Database Validation'
+    ]
+  },
+
+  {
+    title: 'PCR System — UI Automation Framework',
+    client: 'Denso',
+    role: 'Automation Engineer',
+    type: 'UI Automation',
+    period: '10/2025 – Present',
+
+    description:
+      'Designed and developed a Selenium WebDriver automation framework with Java and TestNG, implementing BDD-based workflows for request creation, approval flows and validations.',
+
+    responsibilities: [
+      'Developed a reusable Selenium Java framework with TestNG structure.',
+      'Implemented BDD using Cucumber for readable business-flow automation.',
+      'Automated request creation, approval and validation scenarios.',
+      'Applied Page Object Model for maintainability and reusability.',
+      'Integrated Jenkins automation and executed suites in AWS environments.',
+      'Generated logs and reports for defect analysis and debugging.'
+    ],
+
+    stack: [
+      'Selenium',
+      'Java',
+      'TestNG',
+      'Cucumber',
+      'BDD',
+      'Page Object Model',
+      'Jenkins',
+      'AWS'
+    ]
+  },
+
+  {
+    title: 'Denso — API & Mobile Automation Framework',
+    client: 'Denso',
+    role: 'Automation Framework Developer',
+    type: 'API Automation + Mobile Automation',
+    period: 'Ongoing',
+
+    description:
+      'Designed and maintained reusable API and mobile automation frameworks using Java, REST Assured, Appium and TestNG, with scalable architecture for efficient execution and validation.',
+
+    responsibilities: [
+      'Built reusable API automation frameworks for functional, negative and validation scenarios.',
+      'Automated status-code, payload and business-rule validation checks.',
+      'Developed Appium-based mobile automation for login workflows and end-to-end Android scenarios.',
+      'Used Page Object Model patterns for maintainable mobile test design.',
+      'Executed API and mobile validation with data-driven architecture and reusable test methods.'
+    ],
+
+    stack: [
+      'REST Assured',
+      'Java',
+      'TestNG',
+      'API validation',
+      'Functional testing',
+      'Negative testing',
+      'Data-driven testing',
+      'Response validation',
+      'Business-rule validation',
+      'Appium',
+      'Android Studio',
+      'Page Object Model',
+      'Android devices/emulators',
+      'End-to-end mobile scenarios'
+    ]
+  }
+];
+
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'rajeev-portfolio-api'
+  });
+});
+
+// Profile API
+app.get('/api/profile', (req, res) => {
+  res.json(profile);
+});
+
+// Skills API
+app.get('/api/skills', (req, res) => {
+  res.json(skills);
+});
+
+// Projects API
+app.get('/api/projects', (req, res) => {
+  res.json(projects);
+});
+
+// Contact API
+app.post('/api/contact', (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({
+      message: 'Name, email and message are required.'
+    });
+  }
+
+  console.log('Contact:', {
+    name,
+    email,
+    message
+  });
+
+  res.status(201).json({
+    message: 'Message received successfully.'
+  });
+});
+
+// Start server
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`API running on port ${PORT}`);
+});
